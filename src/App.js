@@ -1,23 +1,16 @@
-import logo from './tenor.gif';
 import './App.css';
+import './Components/Navbar/Navbar.css'
+import './Components/CartWidget/CartWidget.css'
+import Navbar from './Components/Navbar/Navbar';
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Empezanzdo con react por Stefa Chiarelli
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Clickeamo o no ?)
-        </a>
+        <Navbar />
       </header>
+      <ItemListContainer greeting={"Hola Ale como estas!"}/>
     </div>
   );
 }

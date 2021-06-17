@@ -1,0 +1,13 @@
+.coffee__iconoCart {
+    color: white;
+    }
+
+
+
+@media (max-width: 992px) {
+    .coffee__iconoCart {
+        display: none;
+        color: white;
+    }
+}
+
