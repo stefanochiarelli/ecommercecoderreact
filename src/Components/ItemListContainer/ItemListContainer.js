@@ -1,8 +1,16 @@
 import React from 'react'
+import ItemList from '../ItemList/itemList'
+import './ItemListContainer.scss'
 
-function ItemListContainer({greeting}) {
+
+
+
+function ItemListContainer() {
     return (
-        <h1 className="display-2 mt-5">{greeting}</h1>
+        <section className="d-flex justify-content-center" >
+            <ItemList />
+        </section>
+
     )
 }
 
