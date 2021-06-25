@@ -5,14 +5,18 @@ import Item from '../Item/Item'
 
 
 
-function ItemList() {
+function ItemList({apiData}) {
 
-    
+    console.log(apiData)
 
     return (
         <>
-            <Item />
+        {apiData.map((data) =>
+            <Item  producto={data.producto} imagen={data.img} key={data.id}/>
+            )}
+            
         </>
+        
     )
 }
 
