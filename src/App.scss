@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+* {
+  font-family: 'Inconsolata', monospace;
+}
+
+
 .App {
   text-align: center;
+
+
+  height: 80vh;
+  max-height: 100vh;
+  
 
   &-logo {
     height: 40vmin;

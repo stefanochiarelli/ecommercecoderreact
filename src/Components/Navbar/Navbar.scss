@@ -5,17 +5,35 @@
 }
 
 
+    
 
 .coffee__Navbar {
     padding: 0;
+
+        &--a:hover {
+        background-color: rgb(63, 63, 63) !important;
+        
+    }
+    
+
+    &--a {
+        color: white !important;
+        padding: auto 3rem ;
+        margin: 0; 
+        
+    }
+
+    &--a2 {
+        color: white !important;
+        padding: 0;
+        margin: 0;
+        
+    }
 }
 
-.coffee__Navbar--a {
-    color: white !important;
-}
 
-.coffee__Navbar--li4 {
-    max-width: 1600px;
-}
+
+
+
 
 
