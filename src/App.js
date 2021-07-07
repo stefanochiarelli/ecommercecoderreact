@@ -2,17 +2,21 @@ import './App.scss';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import CheckOutCart from './Components/CheckOutCart/CheckOutCart';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+import { CartProvider } from "./Context/Cart/CartContext";
+
 
 function App() {
   return (
     
     <div className="App ">
-    <Router> 
+  <CartProvider>    
+    <Router>
         <Navbar />
         <Switch>
           <Route exact path="/" >
@@ -24,8 +28,13 @@ function App() {
           <Route path="/ItemDetailContainer/:id">
             <ItemDetailContainer/>
           </Route>
+          <Route path="/Cart">
+            <CheckOutCart/>
+          </Route>
         </Switch>
-    </Router>           
+      
+    </Router>
+  </CartProvider>             
   </div>
    
   );

@@ -1,8 +1,16 @@
 .coffee__iconoCart {
     color: white;
     cursor: pointer;
+    position: relative;
     }
 
+    .coffee__widget {
+        position: absolute;
+        padding: .2rem .3rem;
+        border-radius: .5rem;
+        left: 40px;
+        bottom: 13px;
+    }
 
 
 @media (max-width: 992px) {

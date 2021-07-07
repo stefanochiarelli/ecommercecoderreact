@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './Navbar.scss'
-import CartWidget from '../CartWidget/CartWidget'
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import CartModal from "../CartModal/CartModal";
 import {
     Link
   } from "react-router-dom";
@@ -20,7 +20,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light coffee__Navbar">
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand coffee__Navbar--a" style={{padding: '0.5rem 1rem'}} >Chiarelli Coffee</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler coffee__Navbar--toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse coffee__Navbar--li4 " id="navbarNav">
@@ -48,7 +48,7 @@ function Navbar() {
                     </ul>
                     
                 </div>
-                <CartWidget /> 
+                <CartModal />
             </div>
         </nav>
     )

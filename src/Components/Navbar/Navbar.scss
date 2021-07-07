@@ -4,6 +4,28 @@
     
 }
 
+.container-fluid {
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    .coffee__Navbar--toggler{
+        position: absolute;
+        left: 90%;
+        top: 3px;
+        
+    }
+}
+
+@media (max-width: 647px) {
+    .coffee__Navbar--toggler{
+        position: absolute;
+        left: 82%;
+        top: 3px;
+        
+    }
+}
+
 
     
 
