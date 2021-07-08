@@ -3,7 +3,7 @@ import { CartContext } from '../../Context/Cart/CartContext';
 
 import { Link } from "react-router-dom";
 
-function ItemCount({isThisId, cantidad, producto}) {
+function ItemCount({isThisId, cantidad}) {
 
     const  value  = useContext(CartContext)
     

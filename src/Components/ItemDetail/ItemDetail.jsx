@@ -77,10 +77,10 @@ const ItemDetail = ({fArray}) => {
                 <ButtonGroups />
 
                 <div className="d-flex flex-column my-4">
-                  <ItemCount cantidad={onAdd} producto={item.producto} />
+                {cartState.find(item => item.producto === result.producto)? null :<ItemCount cantidad={onAdd} producto={item.producto} />}
                   {count > 0 ? (
                     <div>
-                      <Link to="/Cart" ><button className="btn btn-warning p-2 my-3">Terminar Compra</button></Link>
+                      {cartState.find(item => item.producto === result.producto) ?<Link to="/Cart" ><button className="btn btn-warning p-2 my-3">Terminar Compra</button></Link>:null}
                     </div>
                   ) : null}
                 </div>
