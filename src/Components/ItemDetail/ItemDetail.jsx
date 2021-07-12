@@ -10,10 +10,15 @@ import { Link } from 'react-router-dom'
 const ItemDetail = ({fArray}) => {
     
     
-    let result = {id: 0, producto: ''};
+
+    let result = {id: 0, producto: '', precio: 0};
     for (let i = 0; i < fArray.length; i++) {
+      let text = fArray[i].precio 
+      let number = Number(text.replace(/[^0-9.-]+/g,""));
       result.id = parseInt(fArray[i].id);
       result.producto = fArray[i].producto;
+      result.precio = number;
+      
     }
 
     

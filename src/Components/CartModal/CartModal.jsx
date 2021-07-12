@@ -18,7 +18,7 @@ const CartModal = () => {
 
   return (
     <div>
-      <Button onClick={toggle} className="coffee__CartModal" style={{backgroundColor: '#FFA500', border: 'solid #FFA500'}}> <CartWidget /></Button>
+      {cartState.length >= 1 ?<Button onClick={toggle} className="coffee__CartModal" style={{backgroundColor: '#FFA500', border: 'solid #FFA500'}}> <CartWidget /></Button>:null}
       <Modal isOpen={modal} toggle={toggle} >
         <ModalHeader toggle={toggle}>Su Compra</ModalHeader>
         <ModalBody>

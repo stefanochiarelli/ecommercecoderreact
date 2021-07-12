@@ -2,13 +2,14 @@ import './App.scss';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
-import CheckOutCart from './Components/CheckOutCart/CheckOutCart';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 import { CartProvider } from "./Context/Cart/CartContext";
+import Cart from './Components/Cart/Cart';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
             <ItemDetailContainer/>
           </Route>
           <Route path="/Cart">
-            <CheckOutCart/>
+            <Cart/>
           </Route>
         </Switch>
       

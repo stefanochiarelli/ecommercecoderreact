@@ -1,0 +1,23 @@
+.coffee__Cart--h2 {
+    border-bottom: solid 1px black;
+}
+
+.coffee__ahref{
+    text-decoration: none;
+    color: red;
+
+    &:hover{
+        
+        font-weight: 700;
+    }
+
+    &:focus{
+        color: red;
+    }
+}
+
+.coffee__hr{
+        
+        border: solid black .05rem !important;
+        color: black !important;
+}
