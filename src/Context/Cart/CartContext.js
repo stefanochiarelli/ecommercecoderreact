@@ -1,5 +1,5 @@
 
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState} from 'react'
 import { db } from '../../firebase'
 
 //Context
@@ -16,18 +16,14 @@ export const CartProvider = (props) => {
 
 
     const getItems = () => {
-            const objArr = []
-            db.collection("items").onSnapshot((querySnap) => {
-                querySnap.forEach((docs) => objArr.push({...docs.data(), id: docs.id}))
+            
+            db.collection("items").get().then((querySnap) => {
+                setFireData(querySnap.docs.map((docs) => ({...docs.data(), id: docs.id})))
             })
-        
-        setFireData(objArr)
     }    
     
 
-    useEffect(() => {
-        getItems()    
-    }, [])
+    
 
 
     //Fin de Call a Firebase
@@ -74,11 +70,12 @@ export const CartProvider = (props) => {
         
     };
 
-
+    console.log(cartState)
+    
     //logica para sumar el total del carrito
     let sum = []
     for (let i = 0; i < cartState.length; i++) {
-        sum = [...sum, cartState[i].precio]
+        sum = [...sum, cartState[i].precio1]
     }
 
     const summed = sum.reduce((a, b) => a + b, 0);
@@ -89,7 +86,7 @@ export const CartProvider = (props) => {
 
     //Return Context
     return(
-        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed, fireData}}>
+        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed, getItems, fireData}}>
             {props.children}
         </CartContext.Provider>
     )

@@ -7,22 +7,26 @@ import { CartContext } from '../../Context/Cart/CartContext';
 import { Link } from 'react-router-dom'
 
 
-const ItemDetail = ({fArray}) => {
-    
-    
 
-    let result = {id: 0, producto: '', precio: 0};
+const ItemDetail = (props) => {
+    
+    const { fArray } = props
+
+
+
+    //ESTE FOR LOOP CONVIERTE LA DATA DE FIRESTORE EN UN OBJETO, PARA PODER MANUPULARLO EN CARTCONTEXT MAS FACIL.
+
+    let result = {id: '', producto: '', precio1: 0, precio2: 0, precio3: 0}
     for (let i = 0; i < fArray.length; i++) {
-      let text = fArray[i].precio 
-      let number = Number(text.replace(/[^0-9.-]+/g,""));
-      result.id = parseInt(fArray[i].id);
-      result.producto = fArray[i].producto;
-      result.precio = number;
+      result.id = fArray[i].id
+      result.producto = fArray[i].producto
+      result.precio1 = fArray[i].precio1 
+      result.precio2 = fArray[i].precio2 
+      result.precio3 = fArray[i].precio3  
       
     }
-
-    
-    
+  
+   
     const  value  = useContext(CartContext)
 
     const { AddItem, count, cartState } = value
@@ -58,7 +62,7 @@ const ItemDetail = ({fArray}) => {
             <div className="row " key={item.id}>
               <div className="ml-5 d-flex flex-column align-items-center col-md-12 col-lg-6">
                 <StrapCard dataItems={item} />
-                {cartState.find(item => item.producto === result.producto) ? <Alert color="primary w-50 h-40 my-5">Agrego {checkProd} {result.producto} al carrito!</Alert>: null}
+                { cartState.find(item => item.producto === result.producto) ? <Alert color="primary w-50 h-40 my-5">Agrego {checkProd} {result.producto} al carrito!</Alert>: null} 
               </div>
               
               <div className="d-flex flex-column align-items-center col-md-12 col-lg-6 my-3">
@@ -82,12 +86,12 @@ const ItemDetail = ({fArray}) => {
                 <ButtonGroups />
 
                 <div className="d-flex flex-column my-4">
-                {cartState.find(item => item.producto === result.producto)? null :<ItemCount cantidad={onAdd} producto={item.producto} />}
-                  {count > 0 ? (
+                  {cartState.find(item => item.id === result.id) ? null  : <ItemCount cantidad={onAdd}/>} 
+                   
                     <div>
-                      {cartState.find(item => item.producto === result.producto) ?<Link to="/Cart" ><button className="btn btn-warning p-2 my-3">Terminar Compra</button></Link>:null}
+                      <Link to="/Cart" ><button className="btn btn-warning p-2 my-3">Terminar Compra</button></Link>
                     </div>
-                  ) : null}
+                   
                 </div>
               </div>
             </div>

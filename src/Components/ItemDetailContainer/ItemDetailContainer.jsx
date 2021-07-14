@@ -1,23 +1,18 @@
-import React, {useEffect, useState} from 'react'
+import React, { useContext } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router'
+import { CartContext } from '../../Context/Cart/CartContext'
 
 
 const ItemDetailContainer = () => {
 
     let { id } = useParams();
 
-    const [dataDetail , setDetail] = useState([]);
-    
-    
+    const value = useContext(CartContext)
 
-    useEffect(() => {
-         fetch('https://mocki.io/v1/d2257ce1-54b5-4381-b50a-10b08d17544a')
-         .then((response) => response.json())
-         .then((json) => setDetail(json))
-      }, []);
+    const { fireData } = value
 
-      const filteredArray = dataDetail.filter((data) => id === data.id)
+      const filteredArray = fireData.filter((data) => id === data.id)
 
       
 

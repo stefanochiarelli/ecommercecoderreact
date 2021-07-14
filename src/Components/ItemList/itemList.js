@@ -7,12 +7,12 @@ import Item from '../Item/Item'
 
 function ItemList({apiData}) {
 
-    console.log(apiData)
+    
 
     return (
         <>
         {apiData.map((data) =>
-            <Item  producto={data.producto} tipoCafe={data.tipo} imagen={data.img} ids={data.id} key={data.id}/>
+            <Item  producto={data.producto} description={data.description} tipoCafe={data.tipo} imagen={data.img} ids={data.id} key={data.id}/>
             )}
             
         </>

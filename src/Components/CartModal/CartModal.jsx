@@ -21,13 +21,14 @@ const CartModal = () => {
       {cartState.length >= 1 ?<Button onClick={toggle} className="coffee__CartModal" style={{backgroundColor: '#FFA500', border: 'solid #FFA500'}}> <CartWidget /></Button>:null}
       <Modal isOpen={modal} toggle={toggle} >
         <ModalHeader toggle={toggle}>Su Compra</ModalHeader>
+        { cartState <= 0 ? <ModalBody><h4>No hay items en el cart</h4></ModalBody> :
         <ModalBody>
           {cartState.map( cartCompra => (
               <div key={cartCompra.id}>
                   <CartListGroup dataCompra={cartCompra} />
               </div>
                 ))}
-        </ModalBody>
+        </ModalBody>}  
         <ModalFooter>
           <Link to="/Cart"><Button onClick={toggle} color="success" >Terminar Compra</Button></Link>
           <Button color="danger"  onClick={() => clearCart()} style={{backgroundColor: '#FFA500', border: 'solid #FFA500'}}>Vaciar Carrito</Button>

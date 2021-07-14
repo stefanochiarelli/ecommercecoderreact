@@ -5,9 +5,11 @@ import ItemCount from '../ItemCount/ItemCount'
 
 
 
-function Item({ producto, imagen, ids, tipoCafe }) {
+function Item({ producto, imagen, ids, tipoCafe, description }) {
     
     const idesCount = ids;
+
+    
 
     
 
@@ -22,7 +24,7 @@ function Item({ producto, imagen, ids, tipoCafe }) {
                     <div className="card-body" >
                         <h5 className="card-title">{producto}</h5>
                         <p className="card-text font-weight-bold" style={{fontWeight: 'bold'}}>{tipoCafe}</p>
-                        <p className="card-text  ">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        <p className="card-text  ">{description}</p>
                         <ItemCount  isThisId={idesCount} /> 
                     </div>
                 </div>
