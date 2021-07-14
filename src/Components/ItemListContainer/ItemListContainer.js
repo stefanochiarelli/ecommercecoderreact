@@ -1,34 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import ItemList from '../ItemList/itemList'
 import './ItemListContainer.scss'
-import { useParams } from 'react-router'
-
-
+// import { useParams } from 'react-router'
+import {CartContext} from '../../Context/Cart/CartContext'
 
 function ItemListContainer() {
 
-    const [dataReal , setRealdata] = useState([]);
+    // let { id } = useParams();
 
-    let { id } = useParams();
+    const value = useContext(CartContext)
 
-    const filteredContainer = dataReal.filter( r => id === r.tipo )
-    
-    
+    const { fireData } = value
+
+    const objArr = []
+    // const [dataReal , setRealdata] = useState([]);
+
     useEffect(() => {
+       objArr.push(fireData)
+    }, []);
 
-        
-
-         fetch('https://mocki.io/v1/d2257ce1-54b5-4381-b50a-10b08d17544a')
-         .then((response) => response.json())
-         .then((json) => setRealdata(json))
-         
-         
-        }, []);
-
+    // const filteredContainer = dataReal.filter( r => id === r.tipo )
 
     return (
         <section className="d-flex flex-wrap justify-content-center mx-5"  >
-            <ItemList apiData={id ? filteredContainer : dataReal} />
+            <ItemList apiData={objArr} />
         </section>
 
     )

@@ -1,4 +1,6 @@
-import React, {createContext, useState} from 'react'
+
+import React, {createContext, useState, useEffect} from 'react'
+import { db } from '../../firebase'
 
 //Context
 
@@ -7,6 +9,28 @@ export const CartContext = createContext()
 //Provider
 
 export const CartProvider = (props) => {
+
+
+    //Call A Firebase 
+    const [fireData, setFireData] = useState([])
+
+
+    const getItems = () => {
+            const objArr = []
+            db.collection("items").onSnapshot((querySnap) => {
+                querySnap.forEach((docs) => objArr.push({...docs.data(), id: docs.id}))
+            })
+        
+        setFireData(objArr)
+    }    
+    
+
+    useEffect(() => {
+        getItems()    
+    }, [])
+
+
+    //Fin de Call a Firebase
 
     const [count , setCount] = useState(0)
 
@@ -65,7 +89,7 @@ export const CartProvider = (props) => {
 
     //Return Context
     return(
-        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed}}>
+        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed, fireData}}>
             {props.children}
         </CartContext.Provider>
     )

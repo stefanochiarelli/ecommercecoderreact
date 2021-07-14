@@ -7,6 +7,7 @@ import Item from '../Item/Item'
 
 function ItemList({apiData}) {
 
+    console.log(apiData)
 
     return (
         <>

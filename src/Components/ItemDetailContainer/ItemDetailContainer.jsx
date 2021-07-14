@@ -9,6 +9,7 @@ const ItemDetailContainer = () => {
 
     const [dataDetail , setDetail] = useState([]);
     
+    
 
     useEffect(() => {
          fetch('https://mocki.io/v1/d2257ce1-54b5-4381-b50a-10b08d17544a')
