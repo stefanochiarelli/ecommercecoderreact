@@ -2,6 +2,7 @@ import './App.scss';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import { ToastContainer } from 'react-toastify';
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ function App() {
     <div className="App ">
   <CartProvider>    
     <Router>
+    <ToastContainer/>
         <Navbar />
         <Switch>
           <Route exact path="/" >

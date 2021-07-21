@@ -1,7 +1,55 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import { CartContext } from "../../Context/Cart/CartContext";
+import { format, endOfDay } from "date-fns";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CartForm = () => {
+
+const CartForm = ({BuyerSetter}) => {
+
+  const contextValue = useContext(CartContext)
+
+  const { cartState, summed } = contextValue
+
+  const dateToday = format (endOfDay(new Date()), "yyyy-MM-dd");
+
+  const initialStateUser = {
+    firstName: "",
+    lastName: "", 
+    domicilio: "",
+    email: "",
+    telefono: "",
+    buyerId: Math.floor(Math.random() * 100)
+  }
+
+  
+
+  const [userValue, setUserValue] = useState(initialStateUser)
+
+
+  //Handlers
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+
+    setUserValue({...userValue, [name]: value, items: {id: cartState.map(a => a.id), products: cartState.map(e => e.producto), total: summed + summed * 0.21}, date: dateToday})
+    
+  }
+
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    if(userValue.firstName !== ""){
+      BuyerSetter(userValue, userValue.buyerId);
+      setUserValue({...initialStateUser})
+    } else if (userValue.firstName === "") {
+      toast.error('Debe completar el formulario', {autoClose: 2000, pauseOnHover: false})
+    }
+    
+  }
+
+  
+
   return (
     <Form>
       <FormGroup className="my-3">
@@ -11,11 +59,22 @@ const CartForm = () => {
           name="firstName"
           id="firstName"
           placeholder="Nombre "
+          required
+          onChange={handleChange}
+          value={userValue.firstName}
         />
       </FormGroup>
       <FormGroup className="my-3">
         <Label for="lastName">Apellido</Label>
-        <Input type="text" name="lastName" id="Email" placeholder="Apellido" />
+        <Input
+          type="text"
+          name="lastName"
+          id="lastName"
+          placeholder="Apellido"
+          onChange={handleChange}
+          value={userValue.lastName}
+          required
+        />
       </FormGroup>
       <FormGroup className="my-3">
         <Label for="domicilio">Domicilio</Label>
@@ -24,6 +83,8 @@ const CartForm = () => {
           name="domicilio"
           id="domicilio"
           placeholder="calle123..."
+          onChange={handleChange}
+          value={userValue.domicilio}
         />
         <Input
           className="mt-3"
@@ -92,10 +153,13 @@ const CartForm = () => {
           </FormGroup>
         </Col>
       </Row>
-      <FormGroup className="my-4 pb-4" style={{borderBottom: 'solid 1px black'}} check>
+      <FormGroup
+        className="my-4 pb-4"
+        style={{ borderBottom: "solid 1px black" }}
+        check
+      >
         <Label check>
-          <Input type="checkbox" />{' '}
-          Guardar como dirección predeterminada
+          <Input type="checkbox" /> Guardar como dirección predeterminada
         </Label>
       </FormGroup>
       <h3 className="mt-5">Información de Contacto</h3>
@@ -106,19 +170,29 @@ const CartForm = () => {
           name="email"
           id="email"
           placeholder="Ponga su email... "
+          onChange={handleChange}
+          value={userValue.email}
         />
       </FormGroup>
       <FormGroup className="my-3">
         <Label for="telefono">Teléfono</Label>
-        <Input type="text" name="telefono" id="telefono" placeholder="+54 11..." />
+        <Input
+          type="text"
+          name="telefono"
+          id="telefono"
+          placeholder="+54 11..."
+          onChange={handleChange}
+          value={userValue.phone}
+        />
       </FormGroup>
       <FormGroup className="my-3 pb-3" check>
         <Label check>
-          <Input type="checkbox" />{' '}
-          Deseo recibir contenido promocional
+          <Input type="checkbox" /> Deseo recibir contenido promocional
         </Label>
       </FormGroup>
-      <Button color="primary mb-3 text-center px-5">Continuar Compra a MercadoPago</Button>
+      <Button color="primary mb-3 text-center px-5" onClick={handleSumbit}>
+        Terminar mi Compra
+      </Button>
     </Form>
   );
 };

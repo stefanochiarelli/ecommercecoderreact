@@ -10,9 +10,9 @@ const StrapCard = (props) => {
     
   return (
     <div className="d-flex justify-content-center">
-      <Card style={{ maxWidth: '50%', margin:'0'}}>
-        <CardImg  src={img} alt="Card image cap" style={{maxHeight: '20rem'}}/>
-        <CardBody>
+      <Card style={{ maxWidth: '70%', margin:'0', height: '100%'}}>
+        <CardImg  src={img} alt="Card image cap" />
+        <CardBody className="d-flex flex-column justify-content-center">
           <CardTitle tag="h5">{producto}</CardTitle>
           <CardText>{description}</CardText>
         </CardBody>

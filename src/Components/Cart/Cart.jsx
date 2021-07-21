@@ -4,37 +4,71 @@ import CartCard from '../CartCard/CartCard';
 import CartForm from '../CartForm/CartForm';
 import './Cart.scss';
 import { Link } from 'react-router-dom';
+import { db } from '../../firebase';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Msg from '../MsgCompra/Msg';
 
 
 
 
-const Cart = () => {
+
+function Cart() {
 
     const context = useContext(CartContext)
 
-    const { cartState, summed } = context
+    const { cartState, summed, clearCart } = context
 
+
+    // const HandleHistory = () => {
+    //   useHistory().push("/")
+    // }
+  
     
 
+  //Setter de users a firestore y el Ui de la compra hecha
+  
+  const BuyerSetter = async (compra, userId) => {
+      await db.collection('buyers').doc().set(compra)
+      console.log('se subio el usuario', userId)
 
 
+      //Getter del ultimo comprador
+        db.collection('buyers').where('buyerId', '==', userId).onSnapshot((doc) => {
+        doc.forEach((e) => {
+            let newArr =  [e.data()]
+            localStorage.setItem('Last User', newArr)
+            
+            toast.success(<Msg newArr={newArr} />, {autoClose: 5000})
+            
+          }
+        )
+    });
+   setTimeout (() => {
+    let path =  window.location.origin 
+      clearCart();
+      window.location.assign(path)
+   }, 6000) 
+   
+  }
 
 
 
     return (
-      <div className="container">
+      <div className="container ">
         
-          <div className="row">
-            <div className="col ">
+          <div className="row flex-wrap-reverse">
+          
+            <div className="col-12 col-md-12 col-lg-6">
                 <h2 className="text-start coffee__Cart--h2 mt-3 pb-3">Termine su Compra</h2>
                     <div className="row">
                         <div className="col text-start">
                             <h4 className="my-4 text-start">Complete su información</h4>
-                            <CartForm />
+                            <CartForm BuyerSetter={BuyerSetter}/>
                         </div>
                     </div>
             </div>
-            <div className="col" style={{position: 'sticky'}} >
+            <div className="col-12 col-md-12 col-lg-6 " style={{position: 'sticky'}} >
                 <h2 className="text-start mt-4">Resumen de Compra</h2>
                 {cartState.length > 0 ? <div className="border " >
                     {cartState.map( cartItem =>
