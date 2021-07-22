@@ -1,7 +1,8 @@
 import React from 'react'
 
-const Msg = ({newArr}) => {
+const Msg = ({newArr, orderId}) => {
 
+    
     
    let newMapped = newArr.map(y => y.items);
 
@@ -13,7 +14,7 @@ const Msg = ({newArr}) => {
     domicilio: "",
     email: "",
     telefono: "",
-    buyerId: 0
+    buyerId: orderId
     
     }
     
@@ -24,15 +25,15 @@ const Msg = ({newArr}) => {
         result.domicilio = newArr[i].firstName
         result.email = newArr[i].email
         result.telefono = newArr[i].telefono
-        result.buyerId = newArr[i].buyerId
+        
     }
     
-    console.log(result)
+    
     return (
         <div>
             {Newer.map(t  => (
                 <div >
-                    <h4>Gracias Señor {result.lastName} por su compra, esta es la orden de su compra:</h4>
+                    <h4>Gracias Señor/a {result.lastName} por su compra, esta es la orden de su compra:</h4>
                     <h5>N° de Orden: {result.buyerId}</h5>
                     {t[0] ? <p>Item: {t[0]}</p>: null}
                     {t[1] ? <p>Item: {t[1]}</p>: null}
@@ -41,7 +42,9 @@ const Msg = ({newArr}) => {
                     {t[4] ? <p>Item: {t[4]}</p>: null}
                     {t[5] ? <p>Item: {t[5]}</p>: null}
                     {t[6] ? <p>Item: {t[6]}</p>: null}
-                    {t[7] ? <p>Item: {t[7]}</p>: null}
+                    {t[8] ? <p>Item: {t[7]}</p>: null}
+                    {t[9] ? <p>Item: {t[7]}</p>: null}
+                    {t[10] ? <p>Item: {t[7]}</p>: null}
                 </div>
                 ))}
         </div>

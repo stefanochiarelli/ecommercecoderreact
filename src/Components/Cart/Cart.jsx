@@ -3,7 +3,7 @@ import { CartContext } from '../../Context/Cart/CartContext';
 import CartCard from '../CartCard/CartCard';
 import CartForm from '../CartForm/CartForm';
 import './Cart.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { db } from '../../firebase';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,9 +20,8 @@ function Cart() {
     const { cartState, summed, clearCart } = context
 
 
-    // const HandleHistory = () => {
-    //   useHistory().push("/")
-    // }
+    const HandleHistory = useHistory();
+    
   
     
 
@@ -37,18 +36,18 @@ function Cart() {
         db.collection('buyers').where('buyerId', '==', userId).onSnapshot((doc) => {
         doc.forEach((e) => {
             let newArr =  [e.data()]
-            localStorage.setItem('Last User', newArr)
+            let orderId = e.id
             
-            toast.success(<Msg newArr={newArr} />, {autoClose: 5000})
+            console.log(orderId)
+            toast.success(<Msg newArr={newArr} orderId={orderId} />, {autoClose: 10000})
             
           }
         )
     });
    setTimeout (() => {
-    let path =  window.location.origin 
       clearCart();
-      window.location.assign(path)
-   }, 6000) 
+      HandleHistory.push("/")
+   }, 10000) 
    
   }
 
