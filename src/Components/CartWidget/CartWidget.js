@@ -12,7 +12,7 @@ function CartWidget() {
 
     return (
         
-            <div className="coffee__iconoCart p-3">
+            <div className="coffee__iconoCart p-2">
                {cartState.length > 0?<div className="h-20 w-20 bg-danger coffee__widget"> {cartState.length} </div>:null} 
                 <FontAwesomeIcon icon={faCartPlus} />
 

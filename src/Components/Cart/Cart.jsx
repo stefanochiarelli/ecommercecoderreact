@@ -29,7 +29,7 @@ function Cart() {
   
   const BuyerSetter = async (compra, userId) => {
       await db.collection('buyers').doc().set(compra)
-      console.log('se subio el usuario', userId)
+      
 
 
       //Getter del ultimo comprador

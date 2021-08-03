@@ -1,0 +1,13 @@
+.coffee__select {
+    display: inline-block;
+    
+    & select {
+        padding: .5rem;
+        border-radius: 1rem;
+        box-shadow: 10px 5px 5px black;
+
+        &:focus{
+            outline: none;
+        }
+    }
+}

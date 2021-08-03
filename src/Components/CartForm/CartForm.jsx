@@ -10,7 +10,7 @@ const CartForm = ({BuyerSetter}) => {
 
   const contextValue = useContext(CartContext)
 
-  const { cartState, summed } = contextValue
+  const { cartState, summed, setUserLocal, checkBool, setChecked } = contextValue
 
   const dateToday = format (endOfDay(new Date()), "yyyy-MM-dd");
 
@@ -20,7 +20,7 @@ const CartForm = ({BuyerSetter}) => {
     domicilio: "",
     email: "",
     telefono: "",
-    buyerId: Math.floor(Math.random() * 100)
+    buyerId: Math.floor(Math.random() * 1000)
   }
 
   
@@ -33,21 +33,40 @@ const CartForm = ({BuyerSetter}) => {
   const handleChange = (e) => {
     const {name, value} = e.target
 
-    setUserValue({...userValue, [name]: value, items: {id: cartState.map(a => a.id), products: cartState.map(e => e.producto), total: summed + summed * 0.21}, date: dateToday})
+    setUserValue({...userValue, [name]: value, items: {id: cartState.map(a => a.id), products: cartState.map(e => e.producto), cantidad: cartState.map(e => e.quantity) , total: summed + summed * 0.21}, date: dateToday})
     
   }
+
+  
+  const isChecked = (e) => {
+    if (e.target.checked) {
+
+      setChecked(true)
+      
+    } else {
+      setChecked(false)
+    }
+  }
+
+  
+ 
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    if(userValue.firstName !== ""){
+    if(userValue.firstName !== "" && userValue.telefono !== "" && userValue.lastName !== "" && userValue.email !== ""){
       BuyerSetter(userValue, userValue.buyerId);
       setUserValue({...initialStateUser})
-    } else if (userValue.firstName === "") {
+
+      if(checkBool){
+        localStorage.setItem('User', JSON.stringify(userValue))
+        setUserLocal(JSON.parse(localStorage.getItem('User')))
+      }
+    } else {
       toast.error('Debe completar el formulario', {autoClose: 2000, pauseOnHover: false})
     }
     
+  
   }
-
   
 
   return (
@@ -162,7 +181,16 @@ const CartForm = ({BuyerSetter}) => {
           <Input type="checkbox" /> Guardar como dirección predeterminada
         </Label>
       </FormGroup>
-      <h3 className="mt-5">Información de Contacto</h3>
+      <FormGroup
+        className=" pb-4"
+        
+        check
+      >
+        {!localStorage.getItem('User')?<Label check>
+          <Input type="checkbox" onChange={isChecked}/> Crear usuario en la plataforma?
+        </Label>:null}
+      </FormGroup>
+      <h3 className="mt-3">Información de Contacto</h3>
       <FormGroup className="my-3">
         <Label for="email">Email</Label>
         <Input
@@ -190,7 +218,7 @@ const CartForm = ({BuyerSetter}) => {
           <Input type="checkbox" /> Deseo recibir contenido promocional
         </Label>
       </FormGroup>
-      <Button color="primary mb-3 text-center px-5" onClick={handleSumbit}>
+      <Button color="primary mb-5 text-center px-5" onClick={handleSumbit}>
         Terminar mi Compra
       </Button>
     </Form>

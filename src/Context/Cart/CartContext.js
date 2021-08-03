@@ -75,18 +75,24 @@ export const CartProvider = (props) => {
     //logica para sumar el total del carrito
     let sum = []
     for (let i = 0; i < cartState.length; i++) {
-        sum = [...sum, cartState[i].precio1]
+        sum = [...sum, cartState[i].precio]
     }
 
     const summed = sum.reduce((a, b) => a + b, 0);
 
-    //
+    //State que guarde si el usuario quiere crear el usuario
+    const [checkBool, setChecked] = useState(false)
+
+
+    //USER
+    const [userLocal, setUserLocal] = useState('')
+
     
-    
+    console.log(userLocal)
 
     //Return Context
     return(
-        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed, getItems, fireData}}>
+        <CartContext.Provider value={ {AddItem, setCount, count, cartState, clearCart, removeItem, summed, getItems, fireData, userLocal, setUserLocal,checkBool, setChecked}}>
             {props.children}
         </CartContext.Provider>
     )

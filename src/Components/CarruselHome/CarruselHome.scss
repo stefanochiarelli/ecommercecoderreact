@@ -1,0 +1,61 @@
+.carousel {
+    width: 100% !important;
+    max-height: 90vh !important;
+    margin: 0 !important;
+}
+
+.slide {
+    background-size: cover !important;
+}
+
+.carousel-item img{
+    
+    width: 100% !important;
+    max-height: 90vh !important;
+    
+}
+
+.carousel-control-next-icon {
+    background-color: orange !important;
+    background-repeat: no-repeat;
+    height: 2rem !important;
+    width: 2rem !important;
+    border-radius: 4rem;
+    
+    
+    padding: 2.5rem 2.5rem !important;
+    background-image: url("https://image.flaticon.com/icons/png/512/271/271228.png") !important;
+    background-size: 60% 50%;
+    
+}
+
+.carousel-caption {
+    background-color: rgba($color: #000000, $alpha: 0.6);
+   border-radius: 1rem
+    
+}
+
+.carousel-control-prev-icon {
+    background-image: url("https://image.flaticon.com/icons/png/512/32/32542.png")!important;
+    @extend .carousel-control-next-icon;
+}
+
+.sr-only {
+    display: none !important;
+}
+
+@media (max-width: 700px) {
+    .carousel-control-next-icon {
+        background-color: orange !important;
+        background-repeat: no-repeat;
+        height: 1rem !important;
+        width: 1rem !important;
+        border-radius: 30px;
+        background-size: contain;
+        padding: 1.3rem  1.3rem !important;
+        background-size: 40% 40%;
+        
+    }
+
+    
+}

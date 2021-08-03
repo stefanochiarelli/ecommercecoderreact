@@ -7,7 +7,7 @@ const CartCard = ({items}) => {
 
     const {removeItem} = context
 
-    const { producto, quantity, precio1 , id, img} = items
+    const { producto, quantity, precio , id, img} = items
 
     console.log(id)
   return (
@@ -16,7 +16,7 @@ const CartCard = ({items}) => {
         <img className="coffee__productImg" src={img} alt={`Imagen de ${producto}`} style={{maxWidth: '220px'}} />
         <p className="mx-3 w-100">Producto: {producto}</p>
         <div className="text-end w-100 mr-4">
-            <p className="mx-4 my-0" style={{fontWeight:'600'}}>${precio1}</p>
+            <p className="mx-4 my-0" style={{fontWeight:'600'}}>${precio}</p>
             <p className="mx-4">Cantidad: {quantity}</p>
             <button className="mx-2 btn btn-link coffee__ahref" onClick={() => removeItem(id)}> Remover</button>
         </div>

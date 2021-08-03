@@ -1,15 +1,62 @@
-
-@media (max-width: 992px) {
+@media (min-width: 993px) {
     .coffee__CartModal {
-        display: none;
+        position: absolute !important;
+        top: 0;
+        bottom: 15% !important;
+        left: 92% !important;
+        
         margin: 0;
         padding: 0;
     }
 }
 
+@media (max-width: 992px) {
+    .coffee__CartModal {
+        position: absolute !important;
+        top: 0;
+        bottom: 15% !important;
+        left: 78% !important;
+        
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 715px) {
+    .coffee__CartModal {
+        position: absolute !important;
+        top: 10px;
+        bottom: 15% !important;
+        left: 65% !important;
+        
+        margin: 0;
+        
+
+        max-height: 10px !important;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .coffee__CartModal {
+        position: absolute !important;
+        top: 0;
+        bottom: 15% !important;
+        left: 55% !important;
+        
+        margin: 0;
+        
+
+        max-height: 10px !important;
+    }
+}
+
+
 
 .coffee__CartModal {
-    
+    position: absolute !important;
+    top: 0;
+    left: 300px;
     margin: 0;
     padding: .2rem .5rem;
 }

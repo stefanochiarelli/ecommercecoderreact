@@ -1,0 +1,97 @@
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.coffee__aboutSection {
+    margin: 4rem 1rem;
+    margin-bottom: 11rem;
+}
+
+
+
+.coffee__about--p {
+    margin: .2rem 20%;
+    font-style: italic;
+}
+
+.coffee__aboutCard {
+    display: flex;
+    flex-direction: column;
+    margin: .2rem 20rem;
+}
+
+.coffee__profile img {
+    max-width: 10rem;
+    max-height: 10rem;
+    border-radius: 111rem;
+    border: solid orange 2px;
+    transition: 1s;
+
+    &:hover {
+        filter: drop-shadow(8px 8px 10px gray);
+    }
+}
+
+.coffee__profileIcons {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem .2rem;
+
+    & .fa-github {
+        max-height: 2.5rem;
+        max-width: 2.5rem;
+
+        &:hover {
+            color: orangered;
+            filter: drop-shadow(8px 8px 10px gray);
+            cursor: pointer;
+
+            a {
+                color: orangered;
+            }
+        }
+
+        
+    
+    }
+
+    & .fa-linkedin {
+        max-height: 2.5rem;
+        max-width: 2.5rem;
+        &:hover {
+            color: orangered;
+            filter: drop-shadow(8px 8px 10px gray);
+            cursor: pointer;
+
+            a {
+                color: orangered;
+            }
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .coffee__aboutCard {
+        display: flex;
+        flex-direction: column;
+        margin: .2rem 40%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .coffee__aboutCard {
+        display: flex;
+        flex-direction: column;
+        margin: .2rem 46%;
+    }
+}
+
+@media (max-width: 840px) {
+    .coffee__aboutCard {
+        display: flex;
+        flex-direction: column;
+        margin: .2rem 30%;
+    }
+}

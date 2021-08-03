@@ -3,7 +3,9 @@ import Navbar from './Components/Navbar/Navbar.jsx';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import { ToastContainer } from 'react-toastify';
-
+import Footer from './Components/Footer/Footer';
+import AboutUs from './Components/AboutUs/AboutUs';
+import Terms from './Components/Terms/Terms';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,6 +23,9 @@ function App() {
     <Router>
     <ToastContainer/>
         <Navbar />
+        <Route path="/Cart">
+            <Cart/>
+        </Route>
         <Switch>
           <Route exact path="/" >
             <ItemListContainer />
@@ -31,11 +36,18 @@ function App() {
           <Route path="/ItemDetailContainer/:id">
             <ItemDetailContainer/>
           </Route>
-          <Route path="/Cart">
-            <Cart/>
+          <Route path="/:id">
+            <ItemListContainer/>
           </Route>
+           
         </Switch>
-      
+        <Route exact path="/Terms">
+            <Terms />
+          </Route>
+          <Route exact path="/AboutUs">
+            <AboutUs/>
+          </Route>
+     <Footer /> 
     </Router>
   </CartProvider>             
   </div>
