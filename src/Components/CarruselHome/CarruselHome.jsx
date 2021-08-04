@@ -30,7 +30,7 @@ import './CarruselHome.scss'
 
 const CarruselHome = () => {
 
-    // console.log(data)
+    
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
   

@@ -9,7 +9,7 @@ const CartCard = ({items}) => {
 
     const { producto, quantity, precio , id, img} = items
 
-    console.log(id)
+    
   return (
     
       <div className="d-flex my-4">

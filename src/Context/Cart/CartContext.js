@@ -70,7 +70,7 @@ export const CartProvider = (props) => {
         
     };
 
-    console.log(cartState)
+    
     
     //logica para sumar el total del carrito
     let sum = []
@@ -88,7 +88,7 @@ export const CartProvider = (props) => {
     const [userLocal, setUserLocal] = useState('')
 
     
-    console.log(userLocal)
+    
 
     //Return Context
     return(

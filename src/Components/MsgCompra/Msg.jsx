@@ -13,7 +13,7 @@ const Msg = ({newArr, orderId}) => {
 
   let Newer = newMapped.map(y => ( y.products))
 
-  console.log(Newer)
+  
 
   let result = {
     firstName: "",

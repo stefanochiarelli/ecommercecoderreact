@@ -38,7 +38,7 @@ function Cart() {
             let newArr =  [e.data()]
             let orderId = e.id
             
-            console.log(orderId)
+            
             toast.success(<Msg newArr={newArr} orderId={orderId} />, {autoClose: 10000})
             
           }

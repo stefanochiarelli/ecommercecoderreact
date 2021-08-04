@@ -1,11 +1,11 @@
-##README##
+# README
 
-COMO FUNCIONA??
+¿COMO EJECUTAR EL PROYECTO? SIGA ESTOS PASOS:
 
--App.js tiene un browserRouter. Si uno cliquea en home y en el brand eso redirecciona a ItemListContainer, que es el home.
-Catalogo, tiene tambien rutas pero para sus diferentes categorias que son suave fuerte y medio. Use el hook "useParams" propio de 
-ReactRouter, para darme cuenta que categoria esta siendo clickeada, asi se actualiza ItemListContainer con los elementos de esa 
-respectiva Categoria.
+1. Descargue el proyecto, y agreguelo a su IDE (Visual Studio Code preferentemente)
+2. Abra la terminal dentro de la ruta del proyecto descargado.
+3. Escriba el comando "npm install" y espere hasta que se descarguen las dependencias.
+4. Una vez descargadas, escriba el comando "npm start".
+5. Listo!
 
-Cuando uno clickea en "Ver Detalla" pasa algo similar a Catalogo, solo que lleva a la vista previa, el ItemDetailContainer, del
-Cafe clickeado.
+Espero que les guste el proyecto, este es un proyecto ficticio para el curso de React de Coderhouse. 

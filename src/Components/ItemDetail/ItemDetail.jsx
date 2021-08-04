@@ -66,7 +66,7 @@ const ItemDetail = (props) => {
           }
 
           setResState({...result, precio: precio1})
-          console.log(resState)
+          
           
           break;
 
@@ -79,7 +79,7 @@ const ItemDetail = (props) => {
 
           setResState({...result, precio: precio2})
 
-          console.log(resState)
+          
             break;
 
         case "12kg":
@@ -90,7 +90,7 @@ const ItemDetail = (props) => {
           }
 
           setResState({...result, precio: precio3})
-          console.log(resState)
+          
             break;
 
         default:

@@ -16,7 +16,7 @@ function ItemListContainer() {
 
     const handlePush = useHistory()
 
-    console.log(id)
+    
     const value = useContext(CartContext)
 
     const { getItems, fireData } = value
