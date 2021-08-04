@@ -23,9 +23,16 @@ const CartForm = ({BuyerSetter}) => {
     buyerId: Math.floor(Math.random() * 1000)
   }
 
-  
+  //states
 
   const [userValue, setUserValue] = useState(initialStateUser)
+
+  
+
+
+  //Getter de los datos del usario en local storage
+  
+  const user = JSON.parse(localStorage.getItem('User'))
 
 
   //Handlers
@@ -39,12 +46,23 @@ const CartForm = ({BuyerSetter}) => {
 
   
   const isChecked = (e) => {
-    if (e.target.checked) {
+    const { checked } = e.target
 
-      setChecked(true)
+    if (checked) {
+      
+      if(e.target.className.includes('userCreate')){
+        setChecked(true)
+        
+      } 
+      
       
     } else {
-      setChecked(false)
+      if(e.target.className.includes('userCreate')){
+        setChecked(false)
+        
+      } 
+      
+      
     }
   }
 
@@ -65,7 +83,7 @@ const CartForm = ({BuyerSetter}) => {
       toast.error('Debe completar el formulario', {autoClose: 2000, pauseOnHover: false})
     }
     
-  
+    
   }
   
 
@@ -80,7 +98,7 @@ const CartForm = ({BuyerSetter}) => {
           placeholder="Nombre "
           required
           onChange={handleChange}
-          value={userValue.firstName}
+          value={user ? user.firstName : userValue.firstName}
         />
       </FormGroup>
       <FormGroup className="my-3">
@@ -91,11 +109,11 @@ const CartForm = ({BuyerSetter}) => {
           id="lastName"
           placeholder="Apellido"
           onChange={handleChange}
-          value={userValue.lastName}
+          value={user ? user.lastName : userValue.lastName}
           required
         />
       </FormGroup>
-      <FormGroup className="my-3">
+      <FormGroup className=" my-3 ">
         <Label for="domicilio">Domicilio</Label>
         <Input
           type="text"
@@ -168,26 +186,19 @@ const CartForm = ({BuyerSetter}) => {
               name="domicilio"
               id="domicilio"
               placeholder="Codigo Postal"
+              className="mb-5"
             />
           </FormGroup>
         </Col>
       </Row>
+      
       <FormGroup
-        className="my-4 pb-4"
-        style={{ borderBottom: "solid 1px black" }}
-        check
-      >
-        <Label check>
-          <Input type="checkbox" /> Guardar como dirección predeterminada
-        </Label>
-      </FormGroup>
-      <FormGroup
-        className=" pb-4"
-        
+        className=" pt-4"
+        style={{borderTop: '1px solid black'}}
         check
       >
         {!localStorage.getItem('User')?<Label check>
-          <Input type="checkbox" onChange={isChecked}/> Crear usuario en la plataforma?
+          <Input type="checkbox" className="userCreate" onChange={isChecked}/> Crear usuario en la plataforma?
         </Label>:null}
       </FormGroup>
       <h3 className="mt-3">Información de Contacto</h3>
@@ -199,7 +210,7 @@ const CartForm = ({BuyerSetter}) => {
           id="email"
           placeholder="Ponga su email... "
           onChange={handleChange}
-          value={userValue.email}
+          value={user ? user.email : userValue.email}
         />
       </FormGroup>
       <FormGroup className="my-3">
@@ -210,7 +221,7 @@ const CartForm = ({BuyerSetter}) => {
           id="telefono"
           placeholder="+54 11..."
           onChange={handleChange}
-          value={userValue.phone}
+          value={user ? user.telefono : userValue.telefono}
         />
       </FormGroup>
       <FormGroup className="my-3 pb-3" check>
